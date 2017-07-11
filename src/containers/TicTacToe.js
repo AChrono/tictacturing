@@ -70,7 +70,6 @@ class TicTacToe extends Component {
                 if(!yourTurn && !gameOver){
                     this.makeAiMove(gameState);
                 }
-                console.log(this.state.gameState);
                 return {
                     gameState,
                     yourTurn,
@@ -90,7 +89,7 @@ class TicTacToe extends Component {
                 openSquares.push(index);
             }
         });
-        let aiMove = openSquares[this.random(0, openSquares.length - 1)];
+        let aiMove = openSquares[this.random(0, openSquares.length)];
         setTimeout(()=>{
             this.move(otherMark, aiMove);
         }, 1000);
@@ -99,8 +98,8 @@ class TicTacToe extends Component {
 
     random = (min, max) => {
         min = Math.ceil(min);
-        min = Math.floor(max);
-        return Math.floor(Math.random() * (max-min)) + min;
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
     }
 
     winChecker = (gameState) => {
